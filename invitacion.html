@@ -1,0 +1,336 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#fff0f5">
+    <title>¡Estás invitado! 🎉</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 25px 12px;
+            overflow-x: hidden;
+            font-family: 'Poppins', sans-serif;
+            color: #49364b;
+            background:
+                radial-gradient(circle at 10% 20%, #ffe0ed 0, transparent 35%),
+                radial-gradient(circle at 90% 80%, #e1e5ff 0, transparent 35%),
+                linear-gradient(135deg, #fff8f1, #fff0f6, #f0efff);
+        }
+
+        /* Confeti */
+        #confetti {
+            position: fixed;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 5;
+        }
+
+        .invitation-box {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 460px;
+            padding: 45px 27px 32px;
+            text-align: center;
+            border: 2px solid #ffffff;
+            border-radius: 28px;
+            background: rgba(255, 255, 255, 0.88);
+            box-shadow: 0 20px 60px rgba(133, 83, 120, 0.16);
+            animation: appear 1s ease both;
+        }
+
+        .decoration {
+            position: absolute;
+            font-size: 29px;
+            animation: float 3s ease-in-out infinite;
+        }
+
+        .decoration.one {
+            top: 15px;
+            left: 18px;
+        }
+
+        .decoration.two {
+            top: 25px;
+            right: 20px;
+            animation-delay: 1s;
+        }
+
+        .decoration.three {
+            bottom: 18px;
+            left: 20px;
+            animation-delay: 0.5s;
+        }
+
+        .decoration.four {
+            bottom: 18px;
+            right: 20px;
+            animation-delay: 1.5s;
+        }
+
+        .sparkle {
+            font-size: 48px;
+            margin-bottom: 12px;
+            animation: float 2.5s ease-in-out infinite;
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 7px 15px;
+            margin-bottom: 15px;
+            border-radius: 30px;
+            background: #fff0f6;
+            color: #bd5488;
+            font-size: 11px;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            margin: 0 0 16px;
+            color: #724c78;
+            font-family: 'Playfair Display', serif;
+            font-size: clamp(32px, 8vw, 43px);
+            line-height: 1.2;
+        }
+
+        h1 span {
+            color: #dc78a6;
+            font-style: italic;
+        }
+
+        p {
+            margin: 0 auto 27px;
+            max-width: 340px;
+            color: #776b7c;
+            font-size: 14px;
+            line-height: 1.9;
+        }
+
+        .btn-invitacion {
+            display: inline-block;
+            padding: 16px 27px;
+            border: none;
+            border-radius: 50px;
+            background: linear-gradient(135deg, #ee91b9, #b28be9);
+            box-shadow: 0 9px 22px rgba(185, 117, 185, 0.3);
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: transform 0.25s, box-shadow 0.25s;
+        }
+
+        .btn-invitacion:hover {
+            transform: translateY(-4px) scale(1.03);
+            box-shadow: 0 13px 28px rgba(185, 117, 185, 0.4);
+        }
+
+        .btn-invitacion:active {
+            transform: scale(0.97);
+        }
+
+        .footer-text {
+            margin-top: 27px;
+            color: #b5a5b7;
+            font-size: 12px;
+        }
+
+        .footer-text span {
+            color: #df78a5;
+        }
+
+        @keyframes appear {
+            from {
+                opacity: 0;
+                transform: translateY(25px) scale(0.96);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(-5deg); }
+            50% { transform: translateY(-9px) rotate(5deg); }
+        }
+
+        @media (max-width: 380px) {
+            .invitation-box {
+                padding: 42px 20px 30px;
+            }
+
+            p {
+                font-size: 13px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                animation: none !important;
+                transition: none !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <canvas id="confetti" aria-hidden="true"></canvas>
+
+    <main class="invitation-box">
+        <div class="decoration one" aria-hidden="true">🎈</div>
+        <div class="decoration two" aria-hidden="true">✨</div>
+        <div class="decoration three" aria-hidden="true">🎉</div>
+        <div class="decoration four" aria-hidden="true">💖</div>
+
+        <div class="sparkle" aria-hidden="true">🥳</div>
+
+        <div class="tag">Una ocasión especial</div>
+
+        <h1>¡Estás <span>invitado!</span></h1>
+
+        <p>
+            Hay momentos que se vuelven más especiales
+            cuando los compartimos con las personas que
+            queremos. 💖<br><br>
+            ¡Nos encantaría que nos acompañaras!
+            Prepárate para descubrir todos los detalles.
+        </p>
+
+        <a
+            href="https://canva.link/hyhl1ctxo6sng9l"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-invitacion"
+        >
+            🎁 Ver mi invitación ✨
+        </a>
+
+        <div class="footer-text">
+            Hecho con cariño <span>♥</span> y mucha ilusión
+        </div>
+    </main>
+
+    <script>
+        const canvas = document.getElementById('confetti');
+        const ctx = canvas.getContext('2d');
+
+        let pieces = [];
+        let width, height;
+        let animationId;
+        const colors = [
+            '#ff7eb6', '#ffd166', '#9b8cff',
+            '#7bdff2', '#ff9f68', '#b8e986'
+        ];
+
+        function resize() {
+            const dpr = Math.min(window.devicePixelRatio || 1, 2);
+
+            width = window.innerWidth;
+            height = window.innerHeight;
+
+            canvas.width = width * dpr;
+            canvas.height = height * dpr;
+            canvas.style.width = width + 'px';
+            canvas.style.height = height + 'px';
+
+            ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+        }
+
+        function createPiece(fromTop = false) {
+            return {
+                x: Math.random() * width,
+                y: fromTop ? -Math.random() * height : Math.random() * height,
+                size: Math.random() * 6 + 3,
+                speed: Math.random() * 2 + 1,
+                drift: Math.random() * 1.5 - 0.75,
+                rotation: Math.random() * 360,
+                spin: Math.random() * 5 - 2.5,
+                color: colors[Math.floor(Math.random() * colors.length)],
+                shape: Math.random() > 0.5 ? 'circle' : 'rect'
+            };
+        }
+
+        function drawPiece(piece) {
+            ctx.save();
+            ctx.translate(piece.x, piece.y);
+            ctx.rotate(piece.rotation * Math.PI / 180);
+            ctx.fillStyle = piece.color;
+
+            if (piece.shape === 'circle') {
+                ctx.beginPath();
+                ctx.arc(0, 0, piece.size / 2, 0, Math.PI * 2);
+                ctx.fill();
+            } else {
+                ctx.fillRect(
+                    -piece.size / 2,
+                    -piece.size / 2,
+                    piece.size,
+                    piece.size * 1.5
+                );
+            }
+
+            ctx.restore();
+        }
+
+        function animate() {
+            ctx.clearRect(0, 0, width, height);
+
+            pieces.forEach((piece, index) => {
+                piece.y += piece.speed;
+                piece.x += piece.drift;
+                piece.rotation += piece.spin;
+
+                drawPiece(piece);
+
+                if (piece.y > height + 15) {
+                    pieces[index] = createPiece(true);
+                }
+
+                if (piece.x < -15) piece.x = width + 10;
+                if (piece.x > width + 15) piece.x = -10;
+            });
+
+            animationId = requestAnimationFrame(animate);
+        }
+
+        function startConfetti() {
+            cancelAnimationFrame(animationId);
+            resize();
+
+            // Limitamos la cantidad para que funcione bien en móviles.
+            const amount = width < 500 ? 65 : 110;
+            pieces = Array.from(
+                { length: amount },
+                () => createPiece(true)
+            );
+
+            animate();
+        }
+
+        window.addEventListener('resize', startConfetti);
+
+        startConfetti();
+    </script>
+
+</body>
+</html>
